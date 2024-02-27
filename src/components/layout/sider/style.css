@@ -1,0 +1,33 @@
+/*------ menu ------- */
+.ant-menu:is(.CSidebar){
+  @apply bg-gray-50 border-gray-50;
+  border-inline-end: none !important;
+}
+.ant-menu:is(.CSidebar) .ant-menu-item{
+  @apply flex items-center;
+}
+.ant-menu:is(.CSidebar) > .ant-menu-item:hover {
+  color: var(--primary-color) !important;
+  background-color: var(--primary-color-opacity) !important;
+}
+.ant-menu-light:is(.CSidebar) .ant-menu-item:not(.ant-menu-item-selected):hover * {
+  fill: var(--primary-color);
+  transition: all 0.3s;
+  color: var(--primary-color) !important;
+}
+.ant-menu-light:is(.CSidebar) .ant-menu-item:is(.ant-menu-item-selected) * {
+  fill: var(--primary-color);
+  transition: all 0.3s;
+  color: var(--primary-color) !important;
+}
+.ant-menu-item{
+  margin-top:12px !important;
+  margin-bottom: 12px !important;
+  height:48px;
+  /* padding-top: 8px !important;
+  padding-bottom: 8px !important; */
+}
+
+.ant-layout .ant-layout-sider{
+  background: #f9fafb;
+}

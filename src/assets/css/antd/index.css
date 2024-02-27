@@ -1,0 +1,10 @@
+@import "bg.css";
+
+
+
+.btn-upload {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+  }

@@ -1,0 +1,21 @@
+{
+  "dashboard":"แผงควบคุม",
+  "transaction":"Transaction",
+  "Car management":"Car management",
+   "UserManagement":"User Management",
+   "ListUserManagement":"List User Management",
+
+   "common":{
+    "Success_ful": "จำนวนสำเร็จ",
+    "Failed":"จำนวนล้มเหลว",
+    "Total_API_Calls":"การเรียก API ทั้งหมด",
+    "Bangkok_Insurance":"กรุงเทพประกันภัย",
+    "Hatyai_Insurance":"หาดใหญ่ประกันภัย",
+    "Pattaya_Insurance":"พัทยาประกันภัย",
+    "Get_orderhouse":"รับ/สั่งซื้อ",
+    "Get_orderhouse2":"รับ/สั่งซื้อ02",
+    "Get_orderhouse3":"รับ/สั่งซื้อ03",
+    "Get_orderhouse4":"รับ/สั่งซื้อ04",
+    "Get_orderhouse5":"รับ/สั่งซื้อ05"
+    }
+}

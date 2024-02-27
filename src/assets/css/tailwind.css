@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.c-color .ant-row{
+     @apply bg-gray-900 ;
+}
+.c-hea {
+    @apply bg-gray-900 ;
+}

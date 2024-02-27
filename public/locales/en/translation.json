@@ -1,0 +1,22 @@
+{
+  "dashboard":"Dashboard",
+  "transaction":"Transaction",
+  "Car management":"Car management",
+  "UserManagement":"User Management",
+  "ListUserManagement":"List User Management",
+  "common":{
+      "Success_ful": "Successful",
+      "Failed":"Failed",
+      "Total_API_Calls":"Total API Calls",
+      "Bangkok_Insurance":"Bangkok Insurance",
+      "Hatyai_Insurance":"Hatyai Insurance",
+      "Pattaya_Insurance":"Pattaya Insurance",
+      "Get_orderhouse":"Get/orderhouse",
+      "Get_orderhouse2":"Get/orderhouse02",
+      "Get_orderhouse3":"Get/orderhouse03",
+      "Get_orderhouse4":"Get/orderhouse04",
+      "Get_orderhouse5":"Get/orderhouse05"
+      
+  }
+  
+}

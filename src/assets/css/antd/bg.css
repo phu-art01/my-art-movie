@@ -1,0 +1,8 @@
+
+
+.c-bg {
+    background: black;
+}
+.bannerButton {
+    @apply flex items-center gap-x-2 rounded px-5 py-1.5 text-sm font-semibold transition hover:opacity-75 md:py-2 md:px-6 md:text-xl;
+  }
