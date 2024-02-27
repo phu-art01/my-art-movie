@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Drawer, Form, Input, Row, Select } from "antd";
 import Swal from "sweetalert2";
-import { v4 as uuidv4 } from "uuid";
 import axios from "../../components/config/axios";
 import Cimage from "../../components/image/image";
-import { useParams } from "react-router-dom";
+import { EditOutlined } from "@ant-design/icons";
 
 interface Movie {
   id: number;
@@ -24,7 +23,6 @@ interface CDrawerEditProps {
 
 const CDrawerEdit: React.FC<CDrawerEditProps> = ({ movieId }) => {
   const [open, setOpen] = useState(false);
-  const { id } = useParams<{ id: string }>();
   const [form] = Form.useForm();
   const [movieData, setMovieData] = useState<Movie>({
     id: 0,
@@ -56,20 +54,22 @@ const CDrawerEdit: React.FC<CDrawerEditProps> = ({ movieId }) => {
     setMovieData((prevFormData) => ({ ...prevFormData, image: imageUrl }));
   };
 
-  const submitForm = (e: { preventDefault: () => void }) => {
+  const submitForm = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const formData = form.getFieldsValue();
     const updatedFormData = { ...formData, image: movieData.image };
 
-    axios
-      .patch(`/movies/${movieId}`, updatedFormData)
-      .then((response) => {
-        Swal.fire("แจ้งเตือน", "อัพเดตบทความเรียบร้อย", "success");
-        console.log("aaaa", response.data);
-      })
-      .catch((err) => {
-        Swal.fire("แจ้งเตือน", err.response.data.error, "error");
-      });
+    try {
+      const response = await axios.patch(`/movies/${movieId}`, updatedFormData);
+      await Swal.fire("แจ้งเตือน", "อัพเดตบทความเรียบร้อย", "success");
+      setOpen(false);
+      window.location.reload(); // รีเฟรชหน้า
+      console.log("aaaa", response.data);
+    } catch (error) {
+      Swal.fire("แจ้งเตือน", "error");
+    }
+    
+    
   };
 
   const showDrawer = () => {
@@ -84,9 +84,9 @@ const CDrawerEdit: React.FC<CDrawerEditProps> = ({ movieId }) => {
       <Button
         
         onClick={showDrawer}
-        className="w-[6vw]  text-black flex justify-center rounded-full item-center "
+        className="w-[4vw]  text-black flex justify-center item-center bg-green-700  "
       >
-        แก้ไขข้อมูล
+      <EditOutlined className="flex justify-center text-[20px]" />
       </Button>
       <Drawer title="เพิ่มรายการหนัง" onClose={onClose} open={open} width={500}>
       <Form form={form}>
@@ -131,13 +131,34 @@ const CDrawerEdit: React.FC<CDrawerEditProps> = ({ movieId }) => {
           </Form.Item>
         </Col>
         <Col span={24}>
-          <Form.Item label={"ประเภท"} name="streak" className="w-full m-0">
-            <Input
-              placeholder="ประเภท"
-              className="!border-gray-100 shadow-sm"
-            />
-          </Form.Item>
-        </Col>
+              <Form.Item
+                label={"ประเภท"}
+                name="streak"
+                className="w-full m-0"
+                rules={[{ required: false }]}
+              >
+                <Select
+                  mode="multiple"
+                  allowClear
+                  placeholder="แนวภาพยนตร์"
+                  value={movieData.streak}
+                  onChange={(selectedOptions) =>
+                    setMovieData({ ...movieData, streak: selectedOptions })
+                  }
+                >
+                  <Select.Option value="ภาพยนตร์อาชญากรรม">
+                    ภาพยนตร์อาชญากรรม
+                  </Select.Option>
+                  <Select.Option value="ภาพยนตร์ตลก">ภาพยนตร์ตลก</Select.Option>
+                  <Select.Option value="ภาพยนตร์แอ็คชั่นผจญภัย">
+                    ภาพยนตร์แอ็คชั่นผจญภัย
+                  </Select.Option>
+                  <Select.Option value="ภาพยนตร์ครอบครัว">
+                    ภาพยนตร์ครอบครัว
+                  </Select.Option>
+                </Select>
+              </Form.Item>
+            </Col>
         <Col span={24}>
           <Form.Item
             label={"ผู้กับกำ"}

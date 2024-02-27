@@ -86,7 +86,7 @@ const Movie = () => {
                     {movie.name}
                   </p>
                   <p>
-                    {t("คะแนนจากIMDB")}: {movie.imdb}
+                    {t("IMDB")}: {movie.imdb}
                   </p>
                   <p>
                     {t("เสียง")}: {movie.sound}

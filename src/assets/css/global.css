@@ -1,7 +1,7 @@
 @import "tailwind.css";
 @import "_color.css";
 @import "antd/index.css";
-@import "../font/FC-Iconic/stylesheet.css";
+
 
 .c-bagray {
   background: green;
