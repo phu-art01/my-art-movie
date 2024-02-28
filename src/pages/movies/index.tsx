@@ -26,7 +26,7 @@ const Movie = () => {
     const Movies = async () => {
       const response = await axios.get("/movies");
       setMovies(response.data);
-      setPosts(response.data); // set posts initially with all movies
+      setPosts(response.data); 
     };
   Movies();
   }, []);
@@ -34,12 +34,12 @@ const Movie = () => {
   const handleFilterByTechno = (selectedTechno: string) => {
     setSelectedTechno(selectedTechno);
     if (selectedTechno === "all") {
-      setMovies(posts); // Reset movies to all posts when 'all' is selected
+      setMovies(posts); 
     } else {
       const filteredMovies = posts.filter((movie) =>
         movie.streak.includes(selectedTechno)
       );
-      setMovies(filteredMovies); // Set movies to filtered movies
+      setMovies(filteredMovies); 
     }
   };
 
@@ -52,8 +52,7 @@ const Movie = () => {
             <Select
               defaultValue="all"
               style={{ width: 150 }}
-              onChange={handleFilterByTechno}
-            >
+              onChange={handleFilterByTechno}>
               <Select.Option value="all" style={{ position: "static" }}>
                 ทั้งหมด
               </Select.Option>
