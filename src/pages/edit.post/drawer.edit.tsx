@@ -37,7 +37,7 @@ const CDrawerEdit: React.FC<CDrawerEditProps> = ({ movieId }) => {
   });
 
   useEffect(() => {
-    const fetchMovie = async () => {
+    const Movie = async () => {
       try {
         const response = await axios.get(`/movies/${movieId}`);
         const movie = response.data;
@@ -47,7 +47,7 @@ const CDrawerEdit: React.FC<CDrawerEditProps> = ({ movieId }) => {
         console.error("Error fetching movie:", error);
       }
     };
-    fetchMovie();
+    Movie();
   }, [movieId, form]);
 
   const handleImageChange = (imageUrl: string) => {

@@ -18,18 +18,17 @@ interface Movie {
 
 const Movie = () => {
   const { t } = useTranslation();
-
   const [movies, setMovies] = useState<Movie[]>([]);
   const [posts, setPosts] = useState<Movie[]>([]);
   const [, setSelectedTechno] = useState<string>("all");
 
   useEffect(() => {
-    const fetchMovies = async () => {
+    const Movies = async () => {
       const response = await axios.get("/movies");
       setMovies(response.data);
       setPosts(response.data); // set posts initially with all movies
     };
-    fetchMovies();
+  Movies();
   }, []);
 
   const handleFilterByTechno = (selectedTechno: string) => {
@@ -55,9 +54,11 @@ const Movie = () => {
               style={{ width: 150 }}
               onChange={handleFilterByTechno}
             >
-              <Select.Option value="all" style={{position:"static"}}>ทั้งหมด</Select.Option>
+              <Select.Option value="all" style={{ position: "static" }}>
+                ทั้งหมด
+              </Select.Option>
               {posts.map((movie, index) => (
-                <Select.Option key={index} value={movie.streak} >
+                <Select.Option key={index} value={movie.streak}>
                   {movie.streak}
                 </Select.Option>
               ))}
@@ -80,8 +81,7 @@ const Movie = () => {
                       src={movie.image}
                       style={{ width: "100%", height: 200 }}
                     />
-                  }
-                >
+                  }>
                   <p className="text-lg font-bold text-gray-700">
                     {movie.name}
                   </p>

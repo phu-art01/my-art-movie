@@ -26,11 +26,11 @@ const Product =()=>{
     const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
-    const fetchMovies = async () => {
+    const Movies = async () => {
       const response = await axios.get("/movies");
       setMovies(response.data);
     };
-    fetchMovies();
+    Movies();
   }, []);
 
   const confirmDelete = async (movieId: number) => {

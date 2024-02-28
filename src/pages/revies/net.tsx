@@ -24,11 +24,18 @@ const  Billboard=()=> {
   const { id } = useParams<{ id: string }>();
   const [movie, setMovie] = useState<Movie | null>(null);
   useEffect(() => {
-    axios
-      .get(`/movies/${id}`)
-      .then((response) => setMovie(response.data))
-      .catch((error) => console.error("Error fetching movie:", error));
+    const Data = async () => {
+      try {
+        const response = await axios.get(`/movies/${id}`);
+        setMovie(response.data);
+      } catch (error) {
+        console.error("Error fetching movie:", error);
+      }
+    };
+  
+    Data();
   }, [id]);
+  
   
   return (
     <>

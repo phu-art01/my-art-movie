@@ -26,10 +26,16 @@ const Details =()=>{
   const { id } = useParams<{ id: string }>();
   const [moredetails, setMoredetails] = useState<Moredetails | null>(null);
   useEffect(() => {
-    axios
-      .get(`/movies/${id}`)
-      .then((response) => setMoredetails(response.data))
-      .catch((error) => console.error("Error fetching movie:", error));
+    const Data = async () => {
+      try {
+        const response = await axios.get(`/movies/${id}`);
+        setMoredetails(response.data);
+      } catch (error) {
+        console.error("Error fetching movie:", error);
+      }
+    };
+  
+    Data();
   }, []);
   return(
     <>
