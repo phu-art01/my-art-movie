@@ -66,9 +66,8 @@ const Product = () => {
         {movies &&
           movies.length > 0 &&
           movies.map((movie, index) => (
-            <Col span={6} key={index}>
+            <Col span={8} key={index}>
               <Card
-                hoverable
                 className="h-full "
                 cover={
                   <Image

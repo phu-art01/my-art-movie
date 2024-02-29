@@ -26,20 +26,20 @@ const Movie = () => {
     const Movies = async () => {
       const response = await axios.get("/movies");
       setMovies(response.data);
-      setPosts(response.data); 
+      setPosts(response.data);
     };
-  Movies();
+    Movies();
   }, []);
 
   const handleFilterByTechno = (selectedTechno: string) => {
     setSelectedTechno(selectedTechno);
     if (selectedTechno === "all") {
-      setMovies(posts); 
+      setMovies(posts);
     } else {
       const filteredMovies = posts.filter((movie) =>
         movie.streak.includes(selectedTechno)
       );
-      setMovies(filteredMovies); 
+      setMovies(filteredMovies);
     }
   };
 
@@ -52,7 +52,8 @@ const Movie = () => {
             <Select
               defaultValue="all"
               style={{ width: 150 }}
-              onChange={handleFilterByTechno}>
+              onChange={handleFilterByTechno}
+            >
               <Select.Option value="all" style={{ position: "static" }}>
                 ทั้งหมด
               </Select.Option>
@@ -70,7 +71,7 @@ const Movie = () => {
         {movies &&
           movies.length > 0 &&
           movies.map((movie, index) => (
-            <Col span={6} key={index}>
+            <Col span={8} key={index}>
               <Link to={`/movie/${movie.id}`}>
                 <Card
                   className="h-full w-[100%] "
@@ -80,7 +81,8 @@ const Movie = () => {
                       src={movie.image}
                       style={{ width: "100%", height: 200 }}
                     />
-                  }>
+                  }
+                >
                   <p className="text-lg font-bold text-gray-700">
                     {movie.name}
                   </p>
