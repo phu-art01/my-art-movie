@@ -68,8 +68,6 @@ const CDrawerEdit: React.FC<CDrawerEditProps> = ({ movieId }) => {
     } catch (error) {
       Swal.fire("แจ้งเตือน", "error");
     }
-    
-    
   };
 
   const showDrawer = () => {
@@ -82,55 +80,60 @@ const CDrawerEdit: React.FC<CDrawerEditProps> = ({ movieId }) => {
   return (
     <>
       <Button
-        
         onClick={showDrawer}
         className="w-[4vw]  text-black flex justify-center item-center bg-green-700  "
       >
-      <EditOutlined className="flex justify-center text-[20px]" />
+        <EditOutlined className="flex justify-center text-[20px]" />
       </Button>
       <Drawer title="เพิ่มรายการหนัง" onClose={onClose} open={open} width={500}>
-      <Form form={form}>
-      <Col span={24}>
-        <Form.Item name="profileImage" className="w-full m-0 text-center">
-          <Cimage
-            onImageChange={handleImageChange}
-            onImageUploadError={() => {}}
-          />
-        </Form.Item>
-      </Col>
-      <Row gutter={[8, 20]}>
-        <Col span={24}>
-          <Form.Item
-            label={"ชื่อเรื่อง"}
-            name="name"
-            className="w-full m-0 "
-            rules={[{ required: true }]}
-          >
-            <Input
-              placeholder="ชื่อเรื่อง"
-              className="!border-gray-100 shadow-sm"
-            />
-          </Form.Item>
-        </Col>
-        <Col span={24}>
-          <Form.Item label={"IMDB"} name="imdb" className="w-full m-0">
-            <Input placeholder="IMDB" className="!border-gray-100 shadow-sm" />
-          </Form.Item>
-        </Col>
-        <Col span={24}>
-          <Form.Item label={"เสียง"} name="sound" className="w-full m-0">
-            <Input placeholder="เสียง" className="!border-gray-100 shadow-sm" />
-          </Form.Item>
-        </Col>
-        <Col span={24}>
-          <Form.Item label={"นักแสดง"} name="actor" className="w-full m-0">
-            <Input
-              placeholder="นักแสดง"
-              className="!border-gray-100 shadow-sm"
-            />
-          </Form.Item>
-        </Col>
-        <Col span={24}>
+        <Form form={form}>
+          <Col span={24}>
+            <Form.Item name="profileImage" className="w-full m-0 text-center">
+              <Cimage
+                onImageChange={handleImageChange}
+                onImageUploadError={() => {}}
+              />
+            </Form.Item>
+          </Col>
+          <Row gutter={[8, 20]}>
+            <Col span={24}>
+              <Form.Item
+                label={"ชื่อเรื่อง"}
+                name="name"
+                className="w-full m-0 "
+                rules={[{ required: true }]}
+              >
+                <Input
+                  placeholder="ชื่อเรื่อง"
+                  className="!border-gray-100 shadow-sm"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={24}>
+              <Form.Item label={"IMDB"} name="imdb" className="w-full m-0">
+                <Input
+                  placeholder="IMDB"
+                  className="!border-gray-100 shadow-sm"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={24}>
+              <Form.Item label={"เสียง"} name="sound" className="w-full m-0">
+                <Input
+                  placeholder="เสียง"
+                  className="!border-gray-100 shadow-sm"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={24}>
+              <Form.Item label={"นักแสดง"} name="actor" className="w-full m-0">
+                <Input
+                  placeholder="นักแสดง"
+                  className="!border-gray-100 shadow-sm"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={24}>
               <Form.Item
                 label={"ประเภท"}
                 name="streak"
@@ -159,36 +162,36 @@ const CDrawerEdit: React.FC<CDrawerEditProps> = ({ movieId }) => {
                 </Select>
               </Form.Item>
             </Col>
-        <Col span={24}>
-          <Form.Item
-            label={"ผู้กับกำ"}
-            name="Watchoffline"
-            className="w-full m-0"
+            <Col span={24}>
+              <Form.Item
+                label={"ผู้กับกำ"}
+                name="Watchoffline"
+                className="w-full m-0"
+              >
+                <Input
+                  placeholder="ผู้กับกำ"
+                  className="!border-gray-100 shadow-sm"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={24}>
+              <Form.Item label={"ผู้เขียนบท"} name="swe" className="w-full m-0">
+                <Input
+                  placeholder="ผู้เขียนบท"
+                  className="!border-gray-100 shadow-sm"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Button
+            onClick={submitForm}
+            type="primary"
+            htmlType="submit"
+            className="login-form-button bg-sky-600 w-full mt-4"
           >
-            <Input
-              placeholder="ผู้กับกำ"
-              className="!border-gray-100 shadow-sm"
-            />
-          </Form.Item>
-        </Col>
-        <Col span={24}>
-          <Form.Item label={"ผู้เขียนบท"} name="swe" className="w-full m-0">
-            <Input
-              placeholder="ผู้เขียนบท"
-              className="!border-gray-100 shadow-sm"
-            />
-          </Form.Item>
-        </Col>
-      </Row>
-      <Button
-        onClick={submitForm}
-        type="primary"
-        htmlType="submit"
-        className="login-form-button bg-sky-600 w-full mt-4"
-      >
-        บันทึก
-      </Button>
-    </Form>
+            บันทึก
+          </Button>
+        </Form>
       </Drawer>
     </>
   );

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Button, Col, Drawer, Form, Input, Row, Select } from "antd";
-import Swal from "sweetalert2";
-import { v4 as uuidv4 } from "uuid";
 import axios from "../../components/config/axios";
 import Cimage from "../../components/image/image";
+import Swal from "sweetalert2";
+import { v4 as uuidv4 } from "uuid";
 
 interface Movie {
   id: number;
@@ -48,26 +48,20 @@ const CDrawer: React.FC = () => {
         Watchoffline: "",
         swe: "",
       });
-      
+
       Swal.fire("แจ้งเตือน", "บันทึกข้อมูลเรียบร้อย", "success");
       setOpen(false);
       window.location.reload(); // รีเฟรชหน้า
     } catch (error) {
       Swal.fire("แจ้งเตือน", "error");
-      
     }
   };
-
-
-
   const handleImageChange = (imageUrl: string) => {
     setMovieData((prevFormData) => ({ ...prevFormData, image: imageUrl }));
   };
-
   const showDrawer = () => {
     setOpen(true);
   };
-
   const onClose = () => {
     setOpen(false);
   };

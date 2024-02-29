@@ -1,7 +1,6 @@
-
-import PageHead from "../../components/header/page-head"
-import { useTranslation } from "react-i18next"
-import {  Card, Col, Row,Image, Button } from "antd";
+import PageHead from "../../components/header/page-head";
+import { useTranslation } from "react-i18next";
+import { Card, Col, Row, Image, Button } from "antd";
 import Container from "../../components/container/container";
 import CDrawer from "./drawer";
 import { useEffect, useState } from "react";
@@ -20,10 +19,10 @@ interface Movie {
   image: string;
 }
 
-const Product =()=>{
-    const {t}=useTranslation();
+const Product = () => {
+  const { t } = useTranslation();
 
-    const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
     const Movies = async () => {
@@ -55,21 +54,20 @@ const Product =()=>{
       Swal.fire("Delete failed", "An error occurred while deleting", "error");
     }
   };
-    return(
-<Container className="">
-<Row>
+  return (
+    <Container className="">
+      <Row>
         <PageHead title={t("Movies Online")} />
         <Col className=" flex justify-end rounded-full absolute  right-4 c-bagray ">
           <CDrawer />
         </Col>
       </Row>
-    <Row gutter={[10,10]}>
-    {movies &&
+      <Row gutter={[10, 10]}>
+        {movies &&
           movies.length > 0 &&
           movies.map((movie, index) => (
             <Col span={6} key={index}>
-              
-              <Card 
+              <Card
                 hoverable
                 className="h-full "
                 cover={
@@ -93,20 +91,20 @@ const Product =()=>{
                 <p>
                   {t("ประเภทหนัง")}: {movie.streak}
                 </p>
-                <div className="flex justify-end space-x-2  "><CDrawerEdit movieId={movie.id}  />
-                <Button onClick={() => confirmDelete(movie.id)} className="flex justify-center w-[4vw] bg-red-800 " >
-                <DeleteOutlined className="flex justify-center  text-[20px] " />
-                </Button>
-                 </div>
-                
+                <div className="flex justify-end space-x-2  ">
+                  <CDrawerEdit movieId={movie.id} />
+                  <Button
+                    onClick={() => confirmDelete(movie.id)}
+                    className="flex justify-center w-[4vw] bg-red-800 "
+                  >
+                    <DeleteOutlined className="flex justify-center  text-[20px] " />
+                  </Button>
+                </div>
               </Card>
-              
             </Col>
           ))}
-            
-    </Row>
-    
-</Container>
-    )
-}
+      </Row>
+    </Container>
+  );
+};
 export default Product;
