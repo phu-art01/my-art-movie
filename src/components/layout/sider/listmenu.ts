@@ -23,5 +23,14 @@ export const _menu = [
       path: "/product",
       key: "/product",
     },
+  {
+      code: "A003",
+      icon: CIcon["dashboard"],
+      title: "PREMIUM",
+      titleTH: "PREMIUM",
+      titleEN: "PREMIUM",
+      path: "/premium",
+      key: "/premium",
+    },
    
 ]

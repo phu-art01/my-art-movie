@@ -17,8 +17,7 @@ const beforeUpload = (file: FileType) => {
     message.error('You can only upload JPG/PNG file!');
     return false; // Returning false will prevent uploading
   }
-  const isLt2M = file.size / 2000 / 2000 < 5;
-  console.log("sss",isLt2M)
+  const isLt2M = file.size / 1024 / 1024 < 2;
   if (!isLt2M) {
     message.error('Image must be smaller than 2MB!');
     return false; // Returning false will prevent uploading
@@ -63,7 +62,7 @@ const Cimage: React.FC<CimageProps> = ({ onImageChange, onImageUploadError }) =>
 
   return (
     <>
-      <Upload 
+      <Upload
         name="avatar"
         listType="picture-card"
         className="avatar-uploader"

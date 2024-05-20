@@ -2,6 +2,7 @@
 import Product from "../../pages/edit.post";
 import Page404 from "../../pages/error/Page404";
 import Movie from "../../pages/movies";
+import Premium from "../../pages/premium";
 import Billboard from "../../pages/revies/net";
 
 import AppLayout from "../layout";
@@ -41,6 +42,13 @@ export const routerAuthorization :RouteCustom[] = [
                 keyName:"PRODUCT",
                 requireAuth:true,
                 element: <Product/>
+               },
+            {
+               index:true,
+                path: "/premium" ,
+                keyName:"PREMIUM",
+                requireAuth:true,
+                element: <Premium/>
                },
                {
                   path: "/404",

@@ -16,8 +16,11 @@ interface Movie {
   Watchoffline: string;
   swe: string;
 }
+interface CDrawerProps {
+  setMovies:(movies: Movie[]) => void;
+}
 
-const CDrawer: React.FC = () => {
+const CDrawer: React.FC<CDrawerProps> = ({ setMovies }) => {
   const [open, setOpen] = useState(false);
   const [movieData, setMovieData] = useState<Movie>({
     id: 0,
@@ -36,7 +39,7 @@ const CDrawer: React.FC = () => {
     try {
       const newId = uuidv4();
       const response = await axios.post("/movies", { ...movieData, id: newId });
-      console.log("data", response.data);
+      setMovies (response.data);
       setMovieData({
         id: 0,
         name: "",
@@ -48,14 +51,15 @@ const CDrawer: React.FC = () => {
         Watchoffline: "",
         swe: "",
       });
-
+  
       Swal.fire("แจ้งเตือน", "บันทึกข้อมูลเรียบร้อย", "success");
       setOpen(false);
-      window.location.reload(); // รีเฟรชหน้า
+      window.location.reload();
     } catch (error) {
       Swal.fire("แจ้งเตือน", "error");
     }
   };
+  
   const handleImageChange = (imageUrl: string) => {
     setMovieData((prevFormData) => ({ ...prevFormData, image: imageUrl }));
   };

@@ -59,7 +59,7 @@ const Product = () => {
       <Row>
         <PageHead title={t("Movies Online")} />
         <Col className=" flex justify-end rounded-full absolute  right-4 c-bagray ">
-          <CDrawer />
+          <CDrawer setMovies={setMovies} />
         </Col>
       </Row>
       <Row gutter={[10, 10]}>
